@@ -4,6 +4,7 @@ const request = require('request'),
 var functions={
     requestHandler : function(req,res) {
         console.log('Inside intent:', req.body.request.intent.name);
+        getFuelPrices();
         return {
             "response": {
                 "outputSpeech": {
