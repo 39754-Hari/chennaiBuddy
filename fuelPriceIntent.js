@@ -4,7 +4,7 @@ const request = require('request'),
 var functions={
     requestHandler : function(req,res) {
         console.log('Inside intent:', req.body.request.intent.name);
-        getFuelPrices();
+        resgetFuelPrices();
         return {
             "response": {
                 "outputSpeech": {
@@ -31,7 +31,7 @@ var getFuelPrices = function(){
         request(options, (error, response) => {
             if (!error && response.statusCode == 200) {
                 console.log('Inside success');
-                console.log(response.cities);
+                console.log(response);
             } else if (response.statusCode == 404) {
                 console.log('Inside 404');
                 console.log('');
