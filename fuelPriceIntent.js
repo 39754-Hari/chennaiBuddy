@@ -36,8 +36,8 @@ var getFuelPrices = function(slots){
                 console.log(response.body);
                 cities = response.body.cities;
                 for (var index = 0; index < cities.length; ++index) {
-                    if(cities[index].city == slots.city.value)
-                        console.log(slots.fuel.value + 'price in '+ slots.city.value + 'is :' +cities[index]+'.'+slots.fuel.value  )
+                    if(cities[index].city.toLowerCase() == slots.city.value.toLowerCase())
+                        console.log(slots.fuel.value + 'price in '+ slots.city.value + 'is :' +cities[index]+'.'+(slots.fuel.value).toLowerCase()  )
                 }
             } else if (response.statusCode == 404) {
                 console.log('Inside 404');
