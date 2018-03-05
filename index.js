@@ -15,6 +15,7 @@ app.get('/',(req,res)=>{
 
 app.post('/buddy',(req,res)=>{
     console.log('Req:',req.body.request.intent);
+    console.log(config.values.fuel);
     res.json({
         "response": {
             "outputSpeech": {
