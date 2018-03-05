@@ -12,7 +12,9 @@ app.get('/',(req,res)=>{
     res.send('App running');
 });
 
-
+app.post('/buddy',(req,res)=>{
+    res.send('Welcome to chennai buddy');
+})
 
 
 const server = app.listen(process.env.PORT || 3000, () => {
