@@ -4,7 +4,7 @@ const request = require('request'),
 var functions={
     requestHandler : function(req,res) {
         console.log('Inside intent:', req.body.request.intent.name);
-        getFuelPrices();
+        var responseText = getFuelPrices(req.body.request.intent.slots);
         return {
             "response": {
                 "outputSpeech": {
@@ -20,7 +20,7 @@ var functions={
 
 module.exports = functions;
 
-var getFuelPrices = function(){
+var getFuelPrices = function(slots){
     var cities=[];
     try{
         let options ={
@@ -36,8 +36,8 @@ var getFuelPrices = function(){
                 console.log(response.body);
                 cities = response.body.cities;
                 for (var index = 0; index < cities.length; ++index) {
-                    if(cities[index].city == 'Chennai')
-                        console.log('inloop:',cities[index])
+                    if(cities[index].city == slots.city.value)
+                        console.log(slots.fuel.value + 'price in '+ slots.city.value + 'is :' +cities[index]+'.'+slots.fuel.value  )
                 }
             } else if (response.statusCode == 404) {
                 console.log('Inside 404');
