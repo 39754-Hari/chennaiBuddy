@@ -31,7 +31,7 @@ var getFuelPrices = function(){
 
         request(options, (error, response) => {
             if (!error && response.statusCode == 200) {
-                console.log('Inside success');
+                console.log('Inside success',response.body.location);
                 console.log(response.body);
                 cities = response.body.cities;
                 for (var index = 0; index < cities.length; ++index) {
