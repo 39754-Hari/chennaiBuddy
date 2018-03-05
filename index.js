@@ -62,14 +62,14 @@ const handlers = {
 
 exports.handler = function (event, context, callback) {
     const alexa = Alexa.handler(event, context, callback);
-    alexa.APP_ID = APP_ID;
+    alexa.APP_ID = 'amzn1.ask.skill.8f339faa-ca7f-4213-8e7b-d6c0e5b1e56f';
     // To enable string internationalization (i18n) features, set a resources object.
     alexa.resources = languageStrings;
     alexa.registerHandlers(handlers);
     alexa.execute();
 };
 
-const server = app.listen(process.env.PORT || 3000, () => {
+const server = app.listen(443, () => {
     console.log('Express server listening on port %d', server.address().port);
 });
 
