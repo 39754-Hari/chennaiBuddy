@@ -26,7 +26,8 @@ var getFuelPrices = function(){
         let options ={
             url : config.fuelApiUrl,
             headers : { "X-Mashape-Key": "6sCZzgdqDDmshmixiqXD4oqFCgNwp1cuj7mjsnMn5HLNfmmkiP", "Accept": "application/json"},
-            method : 'GET'
+            method : 'GET',            
+          json: true
         }
 
         request(options, (error, response) => {
