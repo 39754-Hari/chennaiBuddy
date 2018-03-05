@@ -39,6 +39,7 @@ const handlers = {
     },    
     'welcomeIntent' : function() {
         //build response first using responseBuilder and then emit
+        console.log('Inside welcomeintent');
         this.response.speak('Hello World!');
         this.emit(':responseReady');
     },
