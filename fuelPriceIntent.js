@@ -33,10 +33,10 @@ var getFuelPrices = function(){
                 console.log('Inside success');
                 console.log(response.body);
                 let cities = response.body.cities;
-                cities.forEach(function(obj) {
-                    if(obj.city == 'Chennai')
-                        console.log('Chennai value:',obj);
-                }, this);
+                for (var index = 0; index < cities.length; ++index) {
+                    if(cities[index].city == 'Chennai')
+                        console.log('inloop:',cities[index])
+                }
             } else if (response.statusCode == 404) {
                 console.log('Inside 404');
                 console.log('');
