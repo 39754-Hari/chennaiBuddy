@@ -1,5 +1,5 @@
 const express = require('express'),
-Alexa = require('alexa-sdk'),
+Alexa = require('alexa-app'),
 bodyParser = require('body-parser'),
 request = require('request'),
 config = require('./config')
