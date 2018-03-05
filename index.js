@@ -6,7 +6,7 @@ config = require('./config')
 
 const app = express();
 app.use(bodyParser.json());
-
+buddy = new Alexa.app('chennaibuddy');
 
 
 app.get('/',(req,res)=>{
@@ -83,6 +83,13 @@ exports.handler = function (event, context, callback) {
     alexa.registerHandlers(handlers);
     alexa.execute();
 };
+
+
+buddy.launch(function(request, response) {
+    console.log('Inside launch');
+    var prompt = 'Welcome to ChennaiBuddy!';
+    response.say(prompt).shouldEndSession(false);
+  });
 
 const server = app.listen(process.env.PORT || 443, () => {
     console.log('Express server listening on port %d', server.address().port);
