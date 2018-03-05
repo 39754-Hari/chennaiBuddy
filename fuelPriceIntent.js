@@ -31,7 +31,7 @@ var getFuelPrices = function(){
         request(options, (error, response) => {
             if (!error && response.statusCode == 200) {
                 console.log('Inside success');
-                console.log(response);
+                console.log(response.body);
             } else if (response.statusCode == 404) {
                 console.log('Inside 404');
                 console.log('');
