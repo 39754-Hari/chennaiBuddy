@@ -1,5 +1,5 @@
 var config ={
-    'fuel' : 'fuelPriceIntent'
+    'fuelApiUrl' : 'https://newsrain-petrol-diesel-prices-india-v1.p.mashape.com/capitals'
 };
 
 module.exports = config;
