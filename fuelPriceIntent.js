@@ -21,6 +21,7 @@ var functions={
 module.exports = functions;
 
 var getFuelPrices = function(){
+    var cities=[];
     try{
         let options ={
             url : config.fuelApiUrl,
@@ -31,8 +32,8 @@ var getFuelPrices = function(){
         request(options, (error, response) => {
             if (!error && response.statusCode == 200) {
                 console.log('Inside success');
-                console.log(response.body);
-                let cities = response.body.cities;
+                console.log(response.body.cities);
+                cities = response.body.cities;
                 for (var index = 0; index < cities.length; ++index) {
                     if(cities[index].city == 'Chennai')
                         console.log('inloop:',cities[index])
