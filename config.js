@@ -1,5 +1,5 @@
-values ={
-    fuel : 'fuelPriceIntent'
+var values ={
+    'fuel' : 'fuelPriceIntent'
 }
 
 module.exports(values);
