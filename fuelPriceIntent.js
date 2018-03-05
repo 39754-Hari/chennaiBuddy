@@ -29,7 +29,6 @@ var getFuelPrices = function(){
         }
 
         request(options, (error, response) => {
-            let incidentDetails = '';
             if (!error && response.statusCode == 200) {
                 console.log('Inside success');
                 console.log(response.cities);
