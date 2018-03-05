@@ -32,7 +32,8 @@ var getFuelPrices = function(){
             if (!error && response.statusCode == 200) {
                 console.log('Inside success');
                 console.log(response.body);
-                response.body.cities.forEach(function(obj) {
+                let cities = response.body.cities;
+                cities.forEach(function(obj) {
                     if(obj.city == 'Chennai')
                         console.log('Chennai value:',obj);
                 }, this);
