@@ -1,5 +1,5 @@
-var values ={
+var config ={
     'fuel' : 'fuelPriceIntent'
-}
+};
 
-module.exports(values);
+module.exports = config;
