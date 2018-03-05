@@ -16,15 +16,8 @@ app.get('/',(req,res)=>{
 app.post('/buddy',(req,res)=>{
     console.log('Req:',req.body.request.intent);
     console.log(config.fuel);
-    res.json({
-        "response": {
-            "outputSpeech": {
-              "type": "PlainText",
-              "text": "Welcome to Chennai buddy!",
-              "ssml": "<speak>Welcome to Chennai buddy!</speak>"
-            }
-        }
-    });
+    let intent = require('./'+req.body.request.intent.name);
+    res.json(intent.requestHandler(req,res));
 })
 
 buddy.launch(function(request, response) {
