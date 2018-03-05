@@ -14,7 +14,7 @@ app.get('/',(req,res)=>{
 });
 
 app.post('/buddy',(req,res)=>{
-    console.log('Req:',req);
+    console.log('Req:',req.body.request.intent);
     res.send('Welcome to chennai buddy');
 })
 
