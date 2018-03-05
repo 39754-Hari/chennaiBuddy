@@ -20,7 +20,7 @@ app.post('/buddy',(req,res)=>{
     const alexa = Alexa.handler(request, context);
     alexa.APP_ID = 'amzn1.ask.skill.8f339faa-ca7f-4213-8e7b-d6c0e5b1e56f';
     // To enable string internationalization (i18n) features, set a resources object.
-    alexa.resources = languageStrings;
+    //alexa.resources = languageStrings;
     alexa.registerHandlers(handlers);
     alexa.execute();
 })
