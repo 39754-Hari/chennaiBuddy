@@ -15,7 +15,13 @@ app.get('/',(req,res)=>{
 
 app.post('/buddy',(req,res)=>{
     console.log('Req:',req.body.request.intent);
-    res.send('Welcome to chennai buddy');
+    //res.send('Welcome to chennai buddy');
+    const alexa = Alexa.handler(event, context, callback);
+    alexa.APP_ID = 'amzn1.ask.skill.8f339faa-ca7f-4213-8e7b-d6c0e5b1e56f';
+    // To enable string internationalization (i18n) features, set a resources object.
+    alexa.resources = languageStrings;
+    alexa.registerHandlers(handlers);
+    alexa.execute();
 })
 
 const handlers = {
