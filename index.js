@@ -15,7 +15,6 @@ app.get('/',(req,res)=>{
 
 app.post('/buddy',(req,res)=>{
     console.log('Req:',req.body.request.intent);
-    console.log(config.fuel);
     let intent = require('./'+req.body.request.intent.name);
     res.json(intent.requestHandler(req,res));
 })

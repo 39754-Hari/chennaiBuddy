@@ -14,33 +14,35 @@ var functions={
                 }
             }
         }
-    },
-    getFuelPrices : function(){
-        try{
-            let options ={
-                url : config.fuelApiUrl,
-                headers : { "X-Mashape-Key": "6sCZzgdqDDmshmixiqXD4oqFCgNwp1cuj7mjsnMn5HLNfmmkiP", "Accept": "application/json"},
-                method : 'GET'
-            }
-
-            request(options, (error, response) => {
-                let incidentDetails = '';
-                if (!error && response.statusCode == 200) {
-                    console.log('Inside success');
-                    console.log(response.cities);
-                } else if (response.statusCode == 404) {
-                    console.log('Inside 404');
-                    console.log('');
-                } else {
-                    console.log('Inside error');
-                    console.log(error);
-                }
-            });
-        }
-        catch (e){
-            console.log("Exception in getfuelprice " + e);
-        }
     }
+    
 }
 
 module.exports = functions;
+
+var getFuelPrices = function(){
+    try{
+        let options ={
+            url : config.fuelApiUrl,
+            headers : { "X-Mashape-Key": "6sCZzgdqDDmshmixiqXD4oqFCgNwp1cuj7mjsnMn5HLNfmmkiP", "Accept": "application/json"},
+            method : 'GET'
+        }
+
+        request(options, (error, response) => {
+            let incidentDetails = '';
+            if (!error && response.statusCode == 200) {
+                console.log('Inside success');
+                console.log(response.cities);
+            } else if (response.statusCode == 404) {
+                console.log('Inside 404');
+                console.log('');
+            } else {
+                console.log('Inside error');
+                console.log(error);
+            }
+        });
+    }
+    catch (e){
+        console.log("Exception in getfuelprice " + e);
+    }
+}
