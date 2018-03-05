@@ -28,6 +28,11 @@ const handlers = {
 
         this.response.speak(this.attributes.speechOutput).listen(this.attributes.repromptSpeech);
         this.emit(':responseReady');
+    },    
+    'welcomeIntent' : function() {
+        //build response first using responseBuilder and then emit
+        this.response.speak('Hello World!');
+        this.emit(':responseReady');
     },
     'AMAZON.HelpIntent': function () {
         this.attributes.speechOutput = this.t('HELP_MESSAGE');
@@ -61,6 +66,7 @@ const handlers = {
 
 
 exports.handler = function (event, context, callback) {
+    console.log('Inside handler');
     const alexa = Alexa.handler(event, context, callback);
     alexa.APP_ID = 'amzn1.ask.skill.8f339faa-ca7f-4213-8e7b-d6c0e5b1e56f';
     // To enable string internationalization (i18n) features, set a resources object.
