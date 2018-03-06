@@ -37,7 +37,7 @@ var functions={
     }
 };
 
-function weatherForecast(city,date){
+function weatherForecast(city,date,callback){
     var forecastDate = new Date(date);
     var difference = new Date( forecastDate -new Date());
     var days = difference.getDate()+1;    
@@ -59,7 +59,8 @@ function weatherForecast(city,date){
                         var responseText = 'The weather in '+ city + ' on '+ date + ' forecasted as '+forecastday[index].day.condition.text +
                         ', maximum temperature can be upto'+ forecastday[index].day.maxtemp_c +' degree Celsius , minimum temperature will be '+ forecastday[index].day.mintemp_c + 
                         ' degree Celsius.';
-                        return responseText;
+                        callback(err,responseText);
+                        //return responseText;
                     }
             }
         } else if (response.statusCode == 404) {
