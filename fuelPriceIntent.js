@@ -14,24 +14,10 @@ var functions={
           json: true
         }
         
-    return  request(options, (error, response) => {
+    request(options, (error, response) => {
             if (!error && response.statusCode == 200) {
-
                 console.log('Inside success',slots);
                 console.log(response.body);
-                var responseJson = {
-                    "response": {
-                        "outputSpeech": {
-                          "type": "PlainText",
-                          "text": 'responseText',
-                          "ssml": "<speak>responseText</speak>"
-                        }
-                    }
-                }
-                console.log('responseJson : ',responseJson);
-                //return responseJson;
-                res.json (responseJson).end();
-
                 cities = response.body.cities;
                 for (var index = 0; index < cities.length; ++index) {
                     console.log ('inside for loop '+index);
@@ -48,8 +34,18 @@ var functions={
                         else if(slots.fuel.value.toLowerCase()=== 'fuel'){
                             console.log('Fuel price in '+slots.city.value+ ' Petrol  is '+ cities[index].petrol + 'Rupees and  diesel is '+ cities[index].diesel + 'Rupees!');
                             responseText = 'Fuel price in '+slots.city.value+ ' Petrol  is '+ cities[index].petrol + ' Rupees and  diesel is '+ cities[index].diesel + ' Rupees!';
-                        }  
-                                              
+                        } 
+                        var responseJson = {
+                            "response": {
+                                "outputSpeech": {
+                                  "type": "PlainText",
+                                  "text": responseText,
+                                  "ssml": "<speak>"+responseText+"</speak>"
+                                }
+                            }
+                        }
+                        console.log('responseJson : ',responseJson);
+                        res.json (responseJson).end();                                              
                     }
                 }
                 
