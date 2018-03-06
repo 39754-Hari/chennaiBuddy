@@ -29,7 +29,7 @@ var functions={
                         }
                         else if(slots.fuel.value.toLowerCase()=== 'fuel'){
                             console.log('Fuel prices in '+slots.city.value+ ' Petrol  is '+ cities[index].petrol + 'Rupees and  diesel is '+ cities[index].diesel + 'Rupees!');
-                            responseText = 'Fuel prices in '+slots.city.value+ ' Petrol  is '+ cities[index].petrol + ' Rupees and  diesel is '+ cities[index].diesel + ' Rupees!';
+                            responseText = 'Fuel prices in '+slots.city.value+ ' ,Petrol  is '+ cities[index].petrol + ' Rupees and  diesel is '+ cities[index].diesel + ' Rupees!';
                         } 
                         var responseJson = {
                             "response": {
