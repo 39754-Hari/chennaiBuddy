@@ -5,18 +5,7 @@ var functions={
     requestHandler : function(req,res) {        
     var cities=[];
     let slots = req.body.request.intent.slots;
-    var responseText='';
-    var resposeJson = {
-        "response": {
-            "outputSpeech": {
-              "type": "PlainText",
-              "text": 'responseText',
-              "ssml": "<speak>responseText</speak>"
-            }
-        }
-    }
-    console.log('responseJson : ',resposeJson);
-    return resposeJson;
+    var responseText='';    
     try{
         let options ={
             url : config.fuelApiUrl,
@@ -24,7 +13,17 @@ var functions={
             method : 'GET',            
           json: true
         }
-
+        var resposeJson = {
+            "response": {
+                "outputSpeech": {
+                  "type": "PlainText",
+                  "text": 'responseText',
+                  "ssml": "<speak>responseText</speak>"
+                }
+            }
+        }
+        console.log('responseJson : ',resposeJson);
+        return resposeJson;
         request(options, (error, response) => {
             if (!error && response.statusCode == 200) {
                 console.log('Inside success',slots);
