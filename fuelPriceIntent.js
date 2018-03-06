@@ -5,18 +5,7 @@ var functions={
     requestHandler : function(req,res) {        
     var cities=[];
     let slots = req.body.request.intent.slots;
-    var responseText='';   
-    var responseJson = {
-        "response": {
-            "outputSpeech": {
-              "type": "PlainText",
-              "text": 'responseText',
-              "ssml": "<speak>responseText</speak>"
-            }
-        }
-    }
-    console.log('responseJson : ',responseJson);
-    return responseJson; 
+    var responseText='';    
     try{
         let options ={
             url : config.fuelApiUrl,
@@ -25,12 +14,22 @@ var functions={
           json: true
         }
         
-        request(options, (error, response) => {
+    return  request(options, (error, response) => {
             if (!error && response.statusCode == 200) {
 
                 console.log('Inside success',slots);
                 console.log(response.body);
-                
+                var responseJson = {
+                    "response": {
+                        "outputSpeech": {
+                          "type": "PlainText",
+                          "text": 'responseText',
+                          "ssml": "<speak>responseText</speak>"
+                        }
+                    }
+                }
+                console.log('responseJson : ',responseJson);
+                return responseJson;
                 cities = response.body.cities;
                 for (var index = 0; index < cities.length; ++index) {
                     console.log ('inside for loop '+index);
