@@ -13,11 +13,7 @@ var functions={
         if(city != null && typeof city != "undefiend"){
             if(userDate != null && typeof userDate != "undefined"){
                 if (currentDate < enteredDate){
-                    weatherForecast(city,userDate, function(err,resp){
-                        if (err) 
-                            console.log(err);
-                        console.log('After call'+resp);
-                    });
+                    weatherForecast(city,userDate,res);
                     
                 }
                 else if(currentDate > enteredDate){
@@ -37,7 +33,7 @@ var functions={
     }
 };
 
-function weatherForecast(city,date,callback){
+function weatherForecast(city,date,res){
     var forecastDate = new Date(date);
     var difference = new Date( forecastDate -new Date());
     var days = difference.getDate()+1;    
@@ -59,8 +55,17 @@ function weatherForecast(city,date,callback){
                         var responseText = 'The weather in '+ city + ' on '+ date + ' forecasted as '+forecastday[index].day.condition.text +
                         ', maximum temperature can be upto'+ forecastday[index].day.maxtemp_c +' degree Celsius , minimum temperature will be '+ forecastday[index].day.mintemp_c + 
                         ' degree Celsius.';
-                        callback(err,responseText);
-                        //return responseText;
+                    var responseJson = {
+                        "response": {
+                            "outputSpeech": {
+                              "type": "PlainText",
+                              "text": responseText,
+                              "ssml": "<speak>"+responseText+"</speak>"
+                            }
+                        }
+                    }
+                    res.json (responseJson).end();   
+                    return 'success' ;
                     }
             }
         } else if (response.statusCode == 404) {
