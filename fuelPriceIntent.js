@@ -35,7 +35,7 @@ var functions={
                             console.log('Fuel price in '+slots.city.value+ ' Petrol  is '+ cities[index].petrol + 'Rupees and  diesel is '+ cities[index].diesel + 'Rupees!');
                             responseText = 'Fuel price in '+slots.city.value+ ' Petrol  is '+ cities[index].petrol + 'Rupees and  diesel is '+ cities[index].diesel + 'Rupees!';
                         }  
-                        return {
+                        var resposeJson = {
                             "response": {
                                 "outputSpeech": {
                                   "type": "PlainText",
@@ -43,7 +43,9 @@ var functions={
                                   "ssml": "<speak>"+responseText+"</speak>"
                                 }
                             }
-                        }                      
+                        }
+                        console.log('responseJson : ',resposeJson);
+                        return resposeJson;                      
                     }
                 }
                 

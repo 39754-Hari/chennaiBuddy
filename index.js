@@ -16,9 +16,7 @@ app.get('/',(req,res)=>{
 app.post('/buddy',(req,res)=>{
     console.log('Req:',req.body.request.intent);
     let intent = require('./'+req.body.request.intent.name);
-    var resJson = intent.requestHandler(req,res);
-    console.log('final response  :', resJson);
-    res.json(resJson);
+    res.json(intent.requestHandler(req,res));
 })
 
 buddy.launch(function(request, response) {
