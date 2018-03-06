@@ -2,27 +2,10 @@ const request = require('request'),
     config = require ('./config');
 
 var functions={
-    requestHandler : function(req,res) {
-        console.log('Inside intent:', req.body.request.intent.name);
-        var responseText = getFuelPrices(req.body.request.intent.slots);
-        console.log('Response from method : ',responseText);
-        return {
-            "response": {
-                "outputSpeech": {
-                  "type": "PlainText",
-                  "text": "Inside fuel price intent!",
-                  "ssml": "<speak>Inside fuel price intent!</speak>"
-                }
-            }
-        }
-    }
-    
-}
-
-module.exports = functions;
-
-var getFuelPrices = function(slots){
+    requestHandler : function(req,res) {        
     var cities=[];
+    let slots = req.body.request.intent.slots;
+    var responseText='';
     try{
         let options ={
             url : config.fuelApiUrl,
@@ -42,18 +25,27 @@ var getFuelPrices = function(slots){
                         console.log('inside if success'+slots.fuel.value.toLowerCase())
                         if(slots.fuel.value.toLowerCase()=== 'petrol'){
                             console.log('Petrol price in '+slots.city.value+ ' is '+ cities[index].petrol + 'Rupees!');
-                                return  ('Petrol price in '+slots.city.value+ ' is '+ cities[index].petrol + 'Rupees!');
+                            responseText = 'Petrol price in '+slots.city.value+ ' is '+ cities[index].petrol + 'Rupees!';
                         }
                         else if(slots.fuel.value.toLowerCase()=== 'diesel'){
                             console.log('Diesel price in '+slots.city.value+ ' is '+ cities[index].diesel + 'Rupees!');
-                                return  ('Diesel price in '+slots.city.value+ ' is '+ cities[index].diesel + 'Rupees!');
+                            responseText = 'Diesel price in '+slots.city.value+ ' is '+ cities[index].diesel + 'Rupees!';
                         }
                         else if(slots.fuel.value.toLowerCase()=== 'fuel'){
                             console.log('Fuel price in '+slots.city.value+ ' Petrol  is '+ cities[index].petrol + 'Rupees and  diesel is '+ cities[index].diesel + 'Rupees!');
-                                return  ('Fuel price in '+slots.city.value+ ' Petrol  is '+ cities[index].petrol + 'Rupees and  diesel is '+ cities[index].diesel + 'Rupees!');
+                            responseText = 'Fuel price in '+slots.city.value+ ' Petrol  is '+ cities[index].petrol + 'Rupees and  diesel is '+ cities[index].diesel + 'Rupees!';
                         }                        
                     }
                         
+                }
+                return {
+                    "response": {
+                        "outputSpeech": {
+                          "type": "PlainText",
+                          "text": responseText,
+                          "ssml": "<speak>"+responseText+"</speak>"
+                        }
+                    }
                 }
             } else if (response.statusCode == 404) {
                 console.log('Inside 404');
@@ -67,4 +59,12 @@ var getFuelPrices = function(slots){
     catch (e){
         console.log("Exception in getfuelprice " + e);
     }
+        console.log('Inside intent:', req.body.request.intent.name);
+        var responseText = getFuelPrices();
+        console.log('Response from method : ',responseText);
+        
+    }
+    
 }
+
+module.exports = functions;
