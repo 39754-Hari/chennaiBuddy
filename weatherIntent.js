@@ -7,7 +7,6 @@ var functions={
         console.log();
         var city = req.body.request.intent.slots.city.value;
         var userDate = req.body.request.intent.slots.date.value;
-        var type = req.body.request.intent.slots.type.value;
         var currentDate = new Date().toISOString().slice(0,10);
         var enteredDate = new Date(userDate).toISOString().slice(0,10);
         if(city != null && typeof city != "undefiend"){
