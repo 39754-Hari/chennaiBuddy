@@ -19,11 +19,11 @@ var functions={
                     weatherHistory(city,userDate)
                 }
                 else{
-                    getWeather(city);
+                    getWeather(city),res;
                 }
             }
             else{
-                getWeather(city);
+                getWeather(city,res);
             }
         }
         else{
@@ -77,4 +77,37 @@ function weatherForecast(city,date,res){
     });
 }
 
+function getWeather(city,res){
+    let options ={
+        url : config.currentWeatherUrl+city,
+        headers : {  "Accept": "application/json"},
+        method : 'GET',            
+      json: true
+    }
+    request(options, (error, response) => {
+        if (!error && response.statusCode == 200) {
+            var current = response.body.current;
+            var responseText = 'The current weather in '+ city + ' ,is'+current.condition +
+                        '. current temperature is '+ current.temp_c +' degree Celsius .';
+                    var responseJson = {
+                        "response": {
+                            "outputSpeech": {
+                              "type": "PlainText",
+                              "text": responseText,
+                              "ssml": "<speak>"+responseText+"</speak>"
+                            }
+                        }
+                    }
+                    res.json (responseJson).end();   
+                    return 'success' ;
+                    
+        } else if (response.statusCode == 404) {
+            console.log('Inside 404');
+            console.log('');
+        } else {
+            console.log('Inside error');
+            console.log(error);
+        }
+    });
+}
 module.exports = functions;
