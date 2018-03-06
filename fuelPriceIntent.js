@@ -29,7 +29,9 @@ var functions={
                     }
                 }
                 console.log('responseJson : ',responseJson);
-                return responseJson;
+                //return responseJson;
+                res.json (responseJson).end();
+
                 cities = response.body.cities;
                 for (var index = 0; index < cities.length; ++index) {
                     console.log ('inside for loop '+index);
