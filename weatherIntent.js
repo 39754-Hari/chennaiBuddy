@@ -43,7 +43,7 @@ function weatherForecast(city,date){
     }
     request(options, (error, response) => {
         if (!error && response.statusCode == 200) {
-            console.log(response);
+            console.log(response.body.forecast);
             
         } else if (response.statusCode == 404) {
             console.log('Inside 404');
