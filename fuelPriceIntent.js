@@ -36,17 +36,18 @@ var functions={
                             responseText = 'Fuel price in '+slots.city.value+ ' Petrol  is '+ cities[index].petrol + 'Rupees and  diesel is '+ cities[index].diesel + 'Rupees!';
                         }                        
                     }
-                        
-                }
-                return {
-                    "response": {
-                        "outputSpeech": {
-                          "type": "PlainText",
-                          "text": responseText,
-                          "ssml": "<speak>"+responseText+"</speak>"
+                    return {
+                        "response": {
+                            "outputSpeech": {
+                              "type": "PlainText",
+                              "text": responseText,
+                              "ssml": "<speak>"+responseText+"</speak>"
+                            }
                         }
                     }
+                        
                 }
+                
             } else if (response.statusCode == 404) {
                 console.log('Inside 404');
                 console.log('');
