@@ -13,21 +13,23 @@ var functions={
             method : 'GET',            
           json: true
         }
-        var resposeJson = {
-            "response": {
-                "outputSpeech": {
-                  "type": "PlainText",
-                  "text": 'responseText',
-                  "ssml": "<speak>responseText</speak>"
-                }
-            }
-        }
-        console.log('responseJson : ',resposeJson);
-        return resposeJson;
+        
         request(options, (error, response) => {
             if (!error && response.statusCode == 200) {
+
                 console.log('Inside success',slots);
                 console.log(response.body);
+                var resposeJson = {
+                    "response": {
+                        "outputSpeech": {
+                          "type": "PlainText",
+                          "text": 'responseText',
+                          "ssml": "<speak>responseText</speak>"
+                        }
+                    }
+                }
+                console.log('responseJson : ',resposeJson);
+                return resposeJson;
                 cities = response.body.cities;
                 for (var index = 0; index < cities.length; ++index) {
                     console.log ('inside for loop '+index);
