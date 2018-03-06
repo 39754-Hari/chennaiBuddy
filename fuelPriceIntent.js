@@ -59,10 +59,7 @@ var functions={
     catch (e){
         console.log("Exception in getfuelprice " + e);
     }
-        console.log('Inside intent:', req.body.request.intent.name);
-        var responseText = getFuelPrices();
-        console.log('Response from method : ',responseText);
-        
+              
     }
     
 }
