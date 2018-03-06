@@ -39,8 +39,8 @@ var functions={
                             "response": {
                                 "outputSpeech": {
                                   "type": "PlainText",
-                                  "text": responseText,
-                                  "ssml": "<speak>"+responseText+"</speak>"
+                                  "text": 'responseText',
+                                  "ssml": "<speak>responseText</speak>"
                                 }
                             }
                         }
