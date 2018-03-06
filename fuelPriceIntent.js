@@ -40,7 +40,7 @@ var getFuelPrices = function(slots){
                     console.log ('inside for loop '+index);
                     if(cities[index].city.toLowerCase() === slots.city.value.toLowerCase()){
                         console.log('inside if success'+slots.fuel.value.toLowerCase())
-                        switch(String(slots.fuel.value.toLowerCase())){
+                        switch(slots.fuel.value.toLowerCase()){
                             case "petrol":
                                 return  ('Petrol price in '+slots.city.value+ ' is '+ cities[index].petrol + 'Rupees!');
                             break;
