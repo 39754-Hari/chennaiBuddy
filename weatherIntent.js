@@ -34,7 +34,7 @@ var functions={
 function weatherForecast(city,date){
     var forecastDate = new Date(date);
     var difference = new Date( forecastDate -new Date());
-    var days = difference.getDate();    
+    var days = difference.getDate()+1;    
     console.log('Difference :',days);
     let options ={
         url : config.weatherForecastUrl+city+'&days='+days,
