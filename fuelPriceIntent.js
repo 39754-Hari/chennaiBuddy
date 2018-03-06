@@ -25,15 +25,15 @@ var functions={
                         console.log('inside if success'+slots.fuel.value.toLowerCase())
                         if(slots.fuel.value.toLowerCase()=== 'petrol'){
                             console.log('Petrol price in '+slots.city.value+ ' is '+ cities[index].petrol + 'Rupees!');
-                            responseText = 'Petrol price in '+slots.city.value+ ' is '+ cities[index].petrol + 'Rupees!';
+                            responseText = 'Petrol price in '+slots.city.value+ ' is '+ cities[index].petrol + ' Rupees';
                         }
                         else if(slots.fuel.value.toLowerCase()=== 'diesel'){
                             console.log('Diesel price in '+slots.city.value+ ' is '+ cities[index].diesel + 'Rupees!');
-                            responseText = 'Diesel price in '+slots.city.value+ ' is '+ cities[index].diesel + 'Rupees!';
+                            responseText = 'Diesel price in '+slots.city.value+ ' is '+ cities[index].diesel + ' Rupees';
                         }
                         else if(slots.fuel.value.toLowerCase()=== 'fuel'){
                             console.log('Fuel price in '+slots.city.value+ ' Petrol  is '+ cities[index].petrol + 'Rupees and  diesel is '+ cities[index].diesel + 'Rupees!');
-                            responseText = 'Fuel price in '+slots.city.value+ ' Petrol  is '+ cities[index].petrol + 'Rupees and  diesel is '+ cities[index].diesel + 'Rupees!';
+                            responseText = 'Fuel price in '+slots.city.value+ ' Petrol  is '+ cities[index].petrol + ' Rupees and  diesel is '+ cities[index].diesel + ' Rupees!';
                         }  
                         var resposeJson = {
                             "response": {
