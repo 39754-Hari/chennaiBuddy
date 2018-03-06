@@ -6,6 +6,17 @@ var functions={
     var cities=[];
     let slots = req.body.request.intent.slots;
     var responseText='';
+    var resposeJson = {
+        "response": {
+            "outputSpeech": {
+              "type": "PlainText",
+              "text": 'responseText',
+              "ssml": "<speak>responseText</speak>"
+            }
+        }
+    }
+    console.log('responseJson : ',resposeJson);
+    return resposeJson;
     try{
         let options ={
             url : config.fuelApiUrl,
@@ -35,17 +46,7 @@ var functions={
                             console.log('Fuel price in '+slots.city.value+ ' Petrol  is '+ cities[index].petrol + 'Rupees and  diesel is '+ cities[index].diesel + 'Rupees!');
                             responseText = 'Fuel price in '+slots.city.value+ ' Petrol  is '+ cities[index].petrol + ' Rupees and  diesel is '+ cities[index].diesel + ' Rupees!';
                         }  
-                        var resposeJson = {
-                            "response": {
-                                "outputSpeech": {
-                                  "type": "PlainText",
-                                  "text": 'responseText',
-                                  "ssml": "<speak>responseText</speak>"
-                                }
-                            }
-                        }
-                        console.log('responseJson : ',resposeJson);
-                        return resposeJson;                      
+                                              
                     }
                 }
                 
