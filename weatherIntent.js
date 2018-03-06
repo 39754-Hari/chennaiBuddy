@@ -45,7 +45,13 @@ function weatherForecast(city,date){
     request(options, (error, response) => {
         if (!error && response.statusCode == 200) {
             console.log(response.body.forecast);
-            
+            var forecastday = response.body.forecast.forecastday;
+            for (var index = 0; index < forecastday.length; ++index) {
+                if(forecastday[index].date === date)
+                    {
+                        console.log(forecastday[index].day);
+                    }
+            }
         } else if (response.statusCode == 404) {
             console.log('Inside 404');
             console.log('');
