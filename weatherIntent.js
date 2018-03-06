@@ -3,6 +3,7 @@ config = require ('./config');
 
 var functions={
     requestHandler : function(req,res) {
+        var response = ';'
         console.log();
         var city = req.body.request.intent.slots.city.value;
         var userDate = req.body.request.intent.slots.date.value;
@@ -12,7 +13,8 @@ var functions={
         if(city != null && typeof city != "undefiend"){
             if(userDate != null && typeof userDate != "undefined"){
                 if (currentDate < enteredDate){
-                    weatherForecast(city,userDate);
+                    response = weatherForecast(city,userDate);
+                    console.log('After call'+response);
                 }
                 else if(currentDate > enteredDate){
                     weatherHistory(city,userDate)
@@ -50,6 +52,10 @@ function weatherForecast(city,date){
                 if(forecastday[index].date === date)
                     {
                         console.log(forecastday[index].day);
+                        var responseText = 'The weather in '+ city + ' on '+ date + ' forecasted as '+forecastday[index].day.condition.text +
+                        ', maximum temperature can be upto'+ forecastday[index].day.maxtemp_c +' degree Celsius , minimum temperature will be '+ forecastday[index].day.mintemp_c + 
+                        ' degree Celsius.';
+                        return responseText;
                     }
             }
         } else if (response.statusCode == 404) {
