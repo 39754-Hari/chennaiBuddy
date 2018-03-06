@@ -13,8 +13,12 @@ var functions={
         if(city != null && typeof city != "undefiend"){
             if(userDate != null && typeof userDate != "undefined"){
                 if (currentDate < enteredDate){
-                    response = weatherForecast(city,userDate);
-                    console.log('After call'+response);
+                    weatherForecast(city,userDate, function(err,resp){
+                        if (err) 
+                            console.log(err);
+                        console.log('After call'+resp);
+                    });
+                    
                 }
                 else if(currentDate > enteredDate){
                     weatherHistory(city,userDate)
