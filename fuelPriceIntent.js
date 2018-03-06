@@ -16,13 +16,9 @@ var functions={
         
     request(options, (error, response) => {
             if (!error && response.statusCode == 200) {
-                console.log('Inside success',slots);
-                console.log(response.body);
                 cities = response.body.cities;
                 for (var index = 0; index < cities.length; ++index) {
-                    console.log ('inside for loop '+index);
                     if(cities[index].city.toLowerCase() === slots.city.value.toLowerCase()){
-                        console.log('inside if success'+slots.fuel.value.toLowerCase())
                         if(slots.fuel.value.toLowerCase()=== 'petrol'){
                             console.log('Petrol price in '+slots.city.value+ ' is '+ cities[index].petrol + 'Rupees!');
                             responseText = 'Petrol price in '+slots.city.value+ ' is '+ cities[index].petrol + ' Rupees';
@@ -32,8 +28,8 @@ var functions={
                             responseText = 'Diesel price in '+slots.city.value+ ' is '+ cities[index].diesel + ' Rupees';
                         }
                         else if(slots.fuel.value.toLowerCase()=== 'fuel'){
-                            console.log('Fuel price in '+slots.city.value+ ' Petrol  is '+ cities[index].petrol + 'Rupees and  diesel is '+ cities[index].diesel + 'Rupees!');
-                            responseText = 'Fuel price in '+slots.city.value+ ' Petrol  is '+ cities[index].petrol + ' Rupees and  diesel is '+ cities[index].diesel + ' Rupees!';
+                            console.log('Fuel prices in '+slots.city.value+ ' Petrol  is '+ cities[index].petrol + 'Rupees and  diesel is '+ cities[index].diesel + 'Rupees!');
+                            responseText = 'Fuel prices in '+slots.city.value+ ' Petrol  is '+ cities[index].petrol + ' Rupees and  diesel is '+ cities[index].diesel + ' Rupees!';
                         } 
                         var responseJson = {
                             "response": {
@@ -44,7 +40,6 @@ var functions={
                                 }
                             }
                         }
-                        console.log('responseJson : ',responseJson);
                         res.json (responseJson).end();   
                         return 'success' ;
                     }

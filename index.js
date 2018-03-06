@@ -18,13 +18,6 @@ app.post('/buddy',(req,res)=>{
     let intent = require('./'+req.body.request.intent.name);
     intent.requestHandler(req,res);
 })
-
-buddy.launch(function(request, response) {
-    console.log('Inside launch');
-    var prompt = 'Welcome to ChennaiBuddy!';
-    response.say(prompt).shouldEndSession(false);
-  });
-
 const server = app.listen(process.env.PORT || 443, () => {
     console.log('Express server listening on port %d', server.address().port);
 });
