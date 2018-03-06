@@ -45,7 +45,8 @@ var functions={
                             }
                         }
                         console.log('responseJson : ',responseJson);
-                        res.json (responseJson).end();                                              
+                        res.json (responseJson).end(); 
+                        exit;                                             
                     }
                 }
                 
