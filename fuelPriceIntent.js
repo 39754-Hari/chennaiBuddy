@@ -40,17 +40,15 @@ var getFuelPrices = function(slots){
                     console.log ('inside for loop '+index);
                     if(cities[index].city.toLowerCase() === slots.city.value.toLowerCase()){
                         console.log('inside if success'+slots.fuel.value.toLowerCase())
-                        switch(slots.fuel.value.toLowerCase()){
-                            case "petrol":
+                        if(slots.fuel.value.toLowerCase()=== 'petrol'){
                                 return  ('Petrol price in '+slots.city.value+ ' is '+ cities[index].petrol + 'Rupees!');
-                            break;
-                            case "diesel":
-                                return  ('Diesel price in '+slots.city.value+ ' is '+ cities[index].diesel + 'Rupees!');
-                            break;
-                            case "fuel":
-                                return  ('Fuel price in '+slots.city.value+ ' Petrol  is '+ cities[index].petrol + 'Rupees and  diesel is '+ cities[index].diesel + 'Rupees!');
-                            break;
                         }
+                        else if(slots.fuel.value.toLowerCase()=== 'diesel'){
+                                return  ('Diesel price in '+slots.city.value+ ' is '+ cities[index].diesel + 'Rupees!');
+                        }
+                        else if(slots.fuel.value.toLowerCase()=== 'fuel'){
+                                return  ('Fuel price in '+slots.city.value+ ' Petrol  is '+ cities[index].petrol + 'Rupees and  diesel is '+ cities[index].diesel + 'Rupees!');
+                        }                        
                     }
                         
                 }
