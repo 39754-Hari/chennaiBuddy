@@ -31,6 +31,10 @@ var functions={
                             console.log('Fuel prices in '+slots.city.value+ ' Petrol  is '+ cities[index].petrol + 'Rupees and  diesel is '+ cities[index].diesel + 'Rupees!');
                             responseText = 'Fuel prices in '+slots.city.value+ ' ,Petrol  is '+ cities[index].petrol + ' Rupees and  diesel is '+ cities[index].diesel + ' Rupees!';
                         } 
+                        else if(typeof slots.fuel == 'undefiend'){
+                            console.log('Fuel prices in '+slots.city.value+ ' Petrol  is '+ cities[index].petrol + 'Rupees and  diesel is '+ cities[index].diesel + 'Rupees!');
+                            responseText = 'Fuel prices in '+slots.city.value+ ' ,Petrol  is '+ cities[index].petrol + ' Rupees and  diesel is '+ cities[index].diesel + ' Rupees!';
+                        } 
                         var responseJson = {
                             "response": {
                                 "outputSpeech": {
