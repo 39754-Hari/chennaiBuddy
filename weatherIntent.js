@@ -76,7 +76,6 @@ function weatherForecast(city,date,res){
         }
     });
 }
-
 function getWeather(city,res){
     let options ={
         url : config.currentWeatherUrl+city,
