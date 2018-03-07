@@ -19,7 +19,7 @@ var functions={
                     weatherHistory(city,userDate,res)
                 }
                 else{
-                    getWeather(city),res;
+                    getWeather(city,res);
                 }
             }
             else{
@@ -63,7 +63,7 @@ function weatherForecast(city,date,res){
                             }
                         }
                     }
-                    res.json (responseJson).end();   
+                    res.json(responseJson).end();   
                     return 'success' ;
                     }
             }
@@ -97,7 +97,7 @@ function getWeather(city,res){
                             }
                         }
                     }
-                    res.json (responseJson).end();   
+                    res.json(responseJson).end();   
                     return 'success' ;
                     
         } else if (response.statusCode == 404) {
