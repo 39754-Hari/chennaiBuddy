@@ -52,7 +52,7 @@ function weatherForecast(city,date,res){
                     {
                         console.log(forecastday[index].day);
                         var responseText = 'The weather in '+ city + ' on '+ date + ' forecasted as, '+forecastday[index].day.condition.text +
-                        '. maximum temperature can be upto'+ forecastday[index].day.maxtemp_c +' degree Celsius , minimum temperature will be '+ forecastday[index].day.mintemp_c + 
+                        '. maximum temperature can be upto,'+ forecastday[index].day.maxtemp_c +' degree Celsius , minimum temperature will be '+ forecastday[index].day.mintemp_c + 
                         ' degree Celsius.';
                     var responseJson = {
                         "response": {
