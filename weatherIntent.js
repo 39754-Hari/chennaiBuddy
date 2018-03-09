@@ -27,7 +27,7 @@ var functions={
             }
         }
         else{
-            cityMissed();
+            cityMissed(res);
         }
     }
 };
@@ -60,6 +60,18 @@ function weatherForecast(city,date,res){
                               "type": "PlainText",
                               "text": responseText,
                               "ssml": "<speak>"+responseText+"</speak>"
+                            },
+                            "card": {
+                              "type": "Standard",
+                              "title": "Weather in "+city,
+                              "content": "Content of a simple card",
+                              "text": 'The weather in '+ city + ' on '+ date + ' forecasted as, '+forecastday[index].day.condition.text +
+                              '. maximum temperature can be upto,'+ forecastday[index].day.maxtemp_c +' degree Celsius , minimum temperature will be '+ forecastday[index].day.mintemp_c + 
+                              ' degree Celsius.',
+                              "image": {
+                                "smallImageUrl": forecastday[index].day.condition.icon,
+                                "largeImageUrl": forecastday[index].day.condition.icon
+                              }
                             }
                         }
                     }
@@ -141,6 +153,40 @@ function weatherHistory(city,date,res){
                     return 'success' ;
                     }
             }
+        } else if (response.statusCode == 404) {
+            console.log('Inside 404');
+            console.log('');
+        } else {
+            console.log('Inside error');
+            console.log(error);
+        }
+    });
+}
+
+function getWeather(city,res){
+    let options ={
+        url : config.currentWeatherUrl+city,
+        headers : {  "Accept": "application/json"},
+        method : 'GET',            
+      json: true
+    }
+    request(options, (error, response) => {
+        if (!error && response.statusCode == 200) {
+            var current = response.body.current;
+            var responseText = 'The current weather in '+ city + ' ,is'+current.condition +
+                        '. current temperature is '+ current.temp_c +' degree Celsius .';
+                    var responseJson = {
+                        "response": {
+                            "outputSpeech": {
+                              "type": "PlainText",
+                              "text": responseText,
+                              "ssml": "<speak>"+responseText+"</speak>"
+                            }
+                        }
+                    }
+                    res.json(responseJson).end();   
+                    return 'success' ;
+                    
         } else if (response.statusCode == 404) {
             console.log('Inside 404');
             console.log('');
