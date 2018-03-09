@@ -67,8 +67,8 @@ function weatherForecast(city,date,res){
                               "content": "Content of a simple card",
                               "text": responseText,
                               "image": {
-                                "smallImageUrl": forecastday[index].day.condition.icon,
-                                "largeImageUrl": forecastday[index].day.condition.icon
+                                "smallImageUrl": 'https://'+forecastday[index].day.condition.icon,
+                                "largeImageUrl": 'https://'+forecastday[index].day.condition.icon
                               }
                             }
                         }
