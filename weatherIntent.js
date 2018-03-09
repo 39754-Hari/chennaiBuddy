@@ -65,9 +65,7 @@ function weatherForecast(city,date,res){
                               "type": "Standard",
                               "title": "Weather in "+city,
                               "content": "Content of a simple card",
-                              "text": 'The weather in '+ city + ' on '+ date + ' forecasted as, '+forecastday[index].day.condition.text +
-                              '. maximum temperature can be upto,'+ forecastday[index].day.maxtemp_c +' degree Celsius , minimum temperature will be '+ forecastday[index].day.mintemp_c + 
-                              ' degree Celsius.',
+                              "text": responseText,
                               "image": {
                                 "smallImageUrl": forecastday[index].day.condition.icon,
                                 "largeImageUrl": forecastday[index].day.condition.icon
